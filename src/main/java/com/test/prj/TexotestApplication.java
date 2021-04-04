@@ -7,7 +7,6 @@ import java.io.IOException;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.Month;
-import java.time.ZoneOffset;
 import java.time.ZonedDateTime;
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -28,7 +27,7 @@ import antlr.Utils;
 
 @SpringBootApplication
 public class TexotestApplication implements CommandLineRunner {
-	private static final Logger LOGGER = LoggerFactory.getLogger(Utils.class.getName());
+	private static final Logger LOGGER = LoggerFactory.getLogger(Utils.class.getName()); 
 	
 	@Autowired
 	private MovieRepsository movieRepository;
@@ -78,7 +77,7 @@ public class TexotestApplication implements CommandLineRunner {
 			
 			try {
 				int yearStrToInt = Integer.parseInt(line[0]);
-				ZonedDateTime yearZonedDate = ZonedDateTime.of(LocalDate.of(yearStrToInt, Month.JANUARY, 1), LocalTime.of(0, 0), ZoneOffset.UTC);
+				ZonedDateTime yearZonedDate = ZonedDateTime.of(LocalDate.of(yearStrToInt, Month.JANUARY, 1), LocalTime.of(0, 0), GlobalConfigs.GLOBAL_ZONE);
 				long yearTimeStamp = yearZonedDate.toInstant().toEpochMilli();
 				
 				String title = line[1];

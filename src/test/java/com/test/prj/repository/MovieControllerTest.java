@@ -65,5 +65,21 @@ public class MovieControllerTest {
 		
 		assertTrue(movies != null && movies.length > 0);
 	}
+	
+	@Test
+	public void testGreatestProducer() {
+		HttpEntity<Movie[]> entity = new HttpEntity<Movie[]>(null, headers);
+		
+		ResponseEntity<String> response = restTemplate.exchange(
+				createURLWithPort("/api/v1/productor-with-interval"), 
+				HttpMethod.GET, entity, String.class);
+		
+		assertTrue(response.getStatusCode() == HttpStatus.OK);
+		
+		String foundProducer = response.getBody();
+		
+		assertTrue(foundProducer.equals("Bo Derek"));
+
+	}
 
 }
