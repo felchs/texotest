@@ -1,5 +1,5 @@
 # texotest
-<h1> The project description<h1>
+<h1> The project description</h1>
 This is an test of texo given the a simple structure of a Movie to be selected and filterd from a in-memory database
 
 This project uses:
