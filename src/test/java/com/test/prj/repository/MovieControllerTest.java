@@ -16,6 +16,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import com.test.prj.TexotestApplication;
 import com.test.prj.model.Movie;
+import com.test.prj.model.ProducerResult;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes=TexotestApplication.class, webEnvironment=SpringBootTest.WebEnvironment.RANDOM_PORT)
@@ -70,15 +71,16 @@ public class MovieControllerTest {
 	public void testGreatestProducer() {
 		HttpEntity<Movie[]> entity = new HttpEntity<Movie[]>(null, headers);
 		
-		ResponseEntity<String> response = restTemplate.exchange(
+		ResponseEntity<ProducerResult> response = restTemplate.exchange(
 				createURLWithPort("/api/v1/productor-with-interval"), 
-				HttpMethod.GET, entity, String.class);
+				HttpMethod.GET, entity, ProducerResult.class);
 		
 		assertTrue(response.getStatusCode() == HttpStatus.OK);
 		
-		String foundProducer = response.getBody();
+		ProducerResult producerResult = response.getBody();
 		
-		assertTrue(foundProducer.equals("Bo Derek"));
+		assertTrue(producerResult.getMin()[0].getProducer().equals("Bo Derek"));
+		assertTrue(producerResult.getMax()[0].getProducer().equals("Bo Derek"));
 
 	}
 
