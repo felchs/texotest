@@ -79,8 +79,8 @@ public class MovieControllerTest {
 		
 		ProducerResult producerResult = response.getBody();
 		
-		assertTrue(producerResult.getMin()[0].getProducer().equals("Bo Derek"));
-		assertTrue(producerResult.getMax()[0].getProducer().equals("Bo Derek"));
+		assertTrue(producerResult.getMin()[0].getProducer().equals("Joel Silver"));
+		assertTrue(producerResult.getMax()[0].getProducer().equals("Matthew Vaughn"));
 
 	}
 
