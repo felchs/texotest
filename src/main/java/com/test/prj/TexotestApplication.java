@@ -83,9 +83,14 @@ public class TexotestApplication implements CommandLineRunner {
 				String title = line[1];
 				String studio = line[2];
 				String producer = line[3];
-				String winner = line[4];
-				Movie newMovie = new Movie(yearTimeStamp, title, studio, producer, winner);
-				movieRepository.save(newMovie);
+				
+				String[] producers = producer.split("(and|,)");
+				for (String newProducer : producers) {
+					String winner = line[4];
+					Movie newMovie = new Movie(yearTimeStamp, title, studio, newProducer.trim(), winner);
+					movieRepository.save(newMovie);
+				}
+				
 				
 				debugNumInserts++;
 			} catch (Exception e) {

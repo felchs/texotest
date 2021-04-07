@@ -87,5 +87,11 @@ public class Movie {
 	
 	public void setWinner(String winner) {
 		this.winner = winner;
-	}	
+	}
+
+	@Override
+	public String toString() {
+		return "Movie [id=" + id + ", year=" + year + ", title=" + title + ", studio=" + studio + ", producer="
+				+ producer + ", winner=" + winner + "]";
+	}
 }
